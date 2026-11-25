@@ -30,7 +30,7 @@ The chip consists of three main functional blocks coordinated by a central finit
 ### 1. Arithmetic Logic Unit (ALU)
 
 <p align="center">
-  <img src="docs/ALU.png" alt="4-bit ALU Architecture" width="85%">
+  <img src="docs/ALU.png" alt="4-bit ALU Architecture" width="550">
 </p>
 
 The 4-bit ALU performs five basic arithmetic and logical operations:
@@ -46,7 +46,7 @@ The ALU generates a 4-bit result and status flags, including Carry, Zero, Negati
 ### 2. Linear Feedback Shift Register (LFSR)
 
 <p align="center">
-  <img src="docs/LFSR.png" alt="4-bit LFSR Architecture" width="85%">
+  <img src="docs/LFSR.png" alt="4-bit LFSR Architecture" width="550">
 </p>
 
 The design incorporates a 4-bit Linear Feedback Shift Register to generate pseudo-random binary sequences.
@@ -56,7 +56,7 @@ It uses XOR feedback and a non-zero initial seed. With the implemented feedback 
 ### 3. Finite State Machine (FSM)
 
 <p align="center">
-  <img src="docs/FSM.png" alt="Four-state FSM Architecture" width="85%">
+  <img src="docs/FSM.png" alt="Four-state FSM Architecture" width="550">
 </p>
 
 A four-state Finite State Machine controls the operation of the system:
