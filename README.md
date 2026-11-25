@@ -1,42 +1,97 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
+# TT-RANDOM-ALU-4
 
-# Tiny Tapeout Verilog Project Template
+### A Compact Digital ASIC Design | Tiny Tapeout | GF180MCU
 
-- [Read the documentation for project](docs/info.md)
+![GDS](../../workflows/gds/badge.svg)
+![Documentation](../../workflows/docs/badge.svg)
+![Tests](../../workflows/test/badge.svg)
+![FPGA](../../workflows/fpga/badge.svg)
 
-## What is Tiny Tapeout?
+<p align="center">
+  <img src="docs/TT%20RANDOM.png" alt="TT-RANDOM-ALU-4 Architecture" width="100%">
+</p>
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+<p align="center">
+  <strong>4-bit ALU + 4-bit LFSR + 4-state FSM</strong>
+</p>
 
-To learn more and get started, visit https://tinytapeout.com.
+**TT-RANDOM-ALU-4** is an open-source digital integrated circuit developed in Verilog for the Tiny Tapeout platform.
 
-## Set up your Verilog project
+The design integrates three fundamental digital systems: a 4-bit Arithmetic Logic Unit (ALU), a 4-bit Linear Feedback Shift Register (LFSR) pseudo-random number generator, and a four-state Finite State Machine (FSM) controller.
 
-1. Add your Verilog files to the `src` folder.
-2. Edit the [info.yaml](info.yaml) and update information about your project, paying special attention to the `source_files` and `top_module` properties. If you are upgrading an existing Tiny Tapeout project, check out our [online info.yaml migration tool](https://tinytapeout.github.io/tt-yaml-upgrade-tool/).
-3. Edit [docs/info.md](docs/info.md) and add a description of your project.
-4. Adapt the testbench to your design. See [test/README.md](test/README.md) for more information.
+The project explores digital logic design, sequential circuits, combinational logic, and ASIC implementation.
 
-The GitHub action will automatically build the ASIC files using [LibreLane](https://www.zerotoasiccourse.com/terminology/librelane/).
+---
 
-## Enable GitHub actions to build the results page
+## Architecture
 
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+The chip consists of three main functional blocks coordinated by a central finite state machine.
 
-## Resources
+### 1. Arithmetic Logic Unit (ALU)
 
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
-- [Build your design locally](https://www.tinytapeout.com/guides/local-hardening/)
+<p align="center">
+  <img src="docs/ALU.png" alt="4-bit ALU Architecture" width="85%">
+</p>
 
-## What next?
+The 4-bit ALU performs five basic arithmetic and logical operations:
 
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
-  - Bluesky [@tinytapeout.com](https://bsky.app/profile/tinytapeout.com)
+- **ADD:** Addition.
+- **SUB:** Subtraction.
+- **AND:** Bitwise AND.
+- **OR:** Bitwise OR.
+- **XOR:** Bitwise XOR.
+
+The ALU generates a 4-bit result and status flags, including Carry, Zero, Negative, and Overflow.
+
+### 2. Linear Feedback Shift Register (LFSR)
+
+<p align="center">
+  <img src="docs/LFSR.png" alt="4-bit LFSR Architecture" width="85%">
+</p>
+
+The design incorporates a 4-bit Linear Feedback Shift Register to generate pseudo-random binary sequences.
+
+It uses XOR feedback and a non-zero initial seed. With the implemented feedback recurrence, the generator can traverse up to 15 distinct non-zero states before repeating.
+
+### 3. Finite State Machine (FSM)
+
+<p align="center">
+  <img src="docs/FSM.png" alt="Four-state FSM Architecture" width="85%">
+</p>
+
+A four-state Finite State Machine controls the operation of the system:
+
+- **IDLE (00):** Waits for a start command.
+- **LOAD (01):** Loads operands, operation code, and LFSR configuration.
+- **EXECUTE (10):** Performs the selected ALU operation or advances the LFSR.
+- **DONE (11):** Indicates that the operation has been completed.
+
+The FSM coordinates the processing sequence using the system clock.
+
+---
+
+## Input and Output Interface
+
+The design uses the standard Tiny Tapeout interface:
+
+- `ui_in[7:0]`: Eight dedicated input signals for operands and data.
+- `uo_out[7:0]`: Eight dedicated output signals for results, flags, and FSM state.
+- `uio_in[7:0]`: Eight bidirectional input signals for operation selection and control.
+- `uio_out[7:0]`: Output data for the bidirectional pins.
+- `uio_oe[7:0]`: Output-enable signals controlling the direction of the bidirectional pins.
+
+The design supports ALU operation selection, operand loading, LFSR seed configuration, and pseudo-random sequence generation.
+
+## ALU Operation Encoding
+
+The ALU supports five operations selected through `uio_in[3:0]`:
+
+| Opcode | Operation |
+|:---:|---|
+| `0000` | ADD |
+| `0001` | SUB |
+| `0010` | AND |
+| `0011` | OR |
+| `0100` | XOR |
+
+## Project
