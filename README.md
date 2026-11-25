@@ -46,7 +46,7 @@ The ALU generates a 4-bit result and status flags, including Carry, Zero, Negati
 ### 2. Linear Feedback Shift Register (LFSR)
 
 <p align="center">
-  <img src="docs/LFSR.png" alt="4-bit LFSR Architecture" width="550">
+  <img src="docs/LFSR.png" alt="4-bit LFSR Architecture" width="650">
 </p>
 
 The design incorporates a 4-bit Linear Feedback Shift Register to generate pseudo-random binary sequences.
@@ -56,7 +56,7 @@ It uses XOR feedback and a non-zero initial seed. With the implemented feedback 
 ### 3. Finite State Machine (FSM)
 
 <p align="center">
-  <img src="docs/FSM.png" alt="Four-state FSM Architecture" width="550">
+  <img src="docs/FSM.png" alt="Four-state FSM Architecture" width="750">
 </p>
 
 A four-state Finite State Machine controls the operation of the system:
@@ -95,3 +95,35 @@ The ALU supports five operations selected through `uio_in[3:0]`:
 | `0100` | XOR |
 
 ## Project
+
+The main goal of TT-RANDOM-ALU-4 is to design and implement a compact digital integrated circuit that combines fundamental digital systems within a single ASIC.
+
+This project aims to:
+
+Explore the design of combinational and sequential digital circuits using Verilog.
+
+Implement and verify a 4-bit Arithmetic Logic Unit.
+
+Develop a pseudo-random number generator using a 4-bit LFSR.
+
+Understand and implement Finite State Machine control architecture.
+
+Learn the complete ASIC design flow, from RTL development and functional simulation to synthesis and physical implementation.
+
+Explore open-source semiconductor design through the Tiny Tapeout platform.
+
+Development Status
+
+The project is currently undergoing RTL development and functional verification.
+
+The next milestones include automated testing, GF180MCU synthesis, area optimization, and physical design preparation.
+
+Acknowledgments
+
+This project is developed as part of the IEEE Open Silicon Bootcamp 2026, using the Tiny Tapeout open-source hardware ecosystem.
+
+Special thanks to the Tiny Tapeout community for providing accessible tools and resources for learning digital integrated circuit design.
+
+Future Improvements
+
+Future development may include additional ALU operations, improvements to the LFSR architecture, and expanded control functionality.
