@@ -94,36 +94,62 @@ The ALU supports five operations selected through `uio_in[3:0]`:
 | `0011` | OR |
 | `0100` | XOR |
 
+---
+
 ## Project
 
-The main goal of TT-RANDOM-ALU-4 is to design and implement a compact digital integrated circuit that combines fundamental digital systems within a single ASIC.
+### 🎯 Objectives
 
-This project aims to:
+The main goal of **TT-RANDOM-ALU-4** is to design and implement a compact digital integrated circuit integrating fundamental digital systems into a single ASIC.
 
-Explore the design of combinational and sequential digital circuits using Verilog.
+The project focuses on the following objectives:
 
-Implement and verify a 4-bit Arithmetic Logic Unit.
+- **Digital Logic Design:** Explore combinational and sequential circuit design using Verilog.
+- **ALU Development:** Implement and verify a 4-bit Arithmetic Logic Unit.
+- **Pseudo-Random Generation:** Develop a 4-bit LFSR-based pseudo-random number generator.
+- **FSM Architecture:** Design and implement a four-state Finite State Machine controller.
+- **ASIC Design Flow:** Explore the complete process, from RTL development and functional simulation to synthesis and physical implementation.
+- **Open-Source Hardware:** Gain practical experience with semiconductor design through Tiny Tapeout.
 
-Develop a pseudo-random number generator using a 4-bit LFSR.
+---
 
-Understand and implement Finite State Machine control architecture.
+### 🚧 Development Status
 
-Learn the complete ASIC design flow, from RTL development and functional simulation to synthesis and physical implementation.
+**Current stage:** RTL implementation and functional verification.
 
-Explore open-source semiconductor design through the Tiny Tapeout platform.
+The project is being developed through the following milestones:
 
-Development Status
+- [x] Initial Verilog architecture.
+- [x] Integration of ALU, LFSR and FSM.
+- [x] Initial functional simulation.
+- [ ] Automated verification with Cocotb.
+- [ ] GF180MCU synthesis and area analysis.
+- [ ] Physical design and GDS generation.
+- [ ] Tiny Tapeout submission.
 
-The project is currently undergoing RTL development and functional verification.
+---
 
-The next milestones include automated testing, GF180MCU synthesis, area optimization, and physical design preparation.
+### 🤝 Acknowledgments
 
-Acknowledgments
-
-This project is developed as part of the IEEE Open Silicon Bootcamp 2026, using the Tiny Tapeout open-source hardware ecosystem.
+This project is developed as part of the **IEEE Open Silicon Bootcamp 2026**, using the Tiny Tapeout open-source hardware ecosystem.
 
 Special thanks to the Tiny Tapeout community for providing accessible tools and resources for learning digital integrated circuit design.
 
-Future Improvements
+---
 
-Future development may include additional ALU operations, improvements to the LFSR architecture, and expanded control functionality.
+### 🔮 Future Improvements
+
+Potential future developments include:
+
+- Additional arithmetic and logical operations.
+- Improvements to the LFSR architecture.
+- Expanded FSM functionality.
+- Further optimization of area and power consumption.
+
+---
+
+<p align="center">
+  <strong>Designed with Verilog. Built to explore silicon.</strong>
+  <br>
+  <em>TT-RANDOM-ALU-4 | Open Source Hardware</em>
+</p>
